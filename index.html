@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>フィギュアスケート結果データベース</title>
+
+  <style>
+    body{
+      font-family:sans-serif;
+      max-width:1000px;
+      margin:auto;
+      padding:20px;
+    }
+
+    h1{
+      text-align:center;
+    }
+
+    input{
+      width:100%;
+      padding:10px;
+      margin-bottom:20px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    th,td{
+      border:1px solid #ddd;
+      padding:8px;
+    }
+
+    th{
+      background:#e8d2ea;
+      cursor:pointer;
+    }
+
+    tr:nth-child(even){
+      background:#f9f9f9;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>フィギュアスケート結果データベース</h1>
+
+<input
+  type="text"
+  id="search"
+  placeholder="選手名を検索..."
+>
+
+<table id="resultTable">
+  <thead>
+    <tr>
+      <th>大会</th>
+      <th>順位</th>
+      <th>選手名</th>
+      <th>国</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>NHK杯</td>
+      <td>1</td>
+      <td>坂本花織</td>
+      <td>JPN</td>
+    </tr>
+
+    <tr>
+      <td>NHK杯</td>
+      <td>2</td>
+      <td>キム・チェヨン</td>
+      <td>KOR</td>
+    </tr>
+
+    <tr>
+      <td>スケートカナダ</td>
+      <td>1</td>
+      <td>坂本花織</td>
+      <td>JPN</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+const search = document.getElementById("search");
+
+search.addEventListener("keyup", function() {
+  let filter = search.value.toLowerCase();
+  let rows = document.querySelectorAll("#resultTable tbody tr");
+
+  rows.forEach(row => {
+    let text = row.textContent.toLowerCase();
+    row.style.display =
+      text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+
+</body>
+</html>
